@@ -1,0 +1,32 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+h1{
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+}
+.add{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    background: none;
+    border: 1px solid black;
+    border-radius: 2em;
+    padding: .5em 2em;
+    color:  green;
+    font-size: 1.2rem;
+}
+.delete{
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    background: none;
+    border: 1px solid black;
+    border-radius: 2em;
+    padding: .5em 2em;
+    color: rgb(187, 22, 22);
+    font-size: 1.2rem;
+}
