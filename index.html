@@ -10,12 +10,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <h1>To Do</h1>
-    <section>
-        <button class="add">Add</button>
-        <button class="delete">Delete</button>
-    </section>
-
+    <header>
+        <h1><span class="to">To</span>
+            <span class="do">Do</span></h1>
+    </header>
+    <div class="main">
+        <div class="inputForTask">
+            <input type="text" placeholder="enter the task" id="inputTask">
+            <input type="button" onclick="add()" value="add">   
+        </div>
+        <div id="tasks">
+        </div>
+    </div>
     <script src="./main.js"></script>
 </body>
 </html>
