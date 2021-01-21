@@ -1,5 +1,3 @@
-
-
 function add(){
 
     let tasks = document.querySelector("#tasks");
@@ -7,10 +5,11 @@ function add(){
     let checkbox = document.createElement("input");
     let label = document.createElement("label");
     let lineBreak = document.createElement("br");
+
     checkbox.type = "checkbox";
     label.innerHTML = inputTask.value;
     
-    if (inputTask != ""){ 
+    if (inputTask.value){ 
         tasks.appendChild(checkbox);
         tasks.appendChild(label);
         tasks.appendChild(lineBreak);
