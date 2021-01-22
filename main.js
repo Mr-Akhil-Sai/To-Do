@@ -1,52 +1,44 @@
+let inputField = document.querySelector("#inputField");
+let addBtn = document.querySelector("#addBtn");
+let tasks = document.querySelector("#tasks");
+addBtn.addEventListener("click", addTask);
 
+function addTask() {
+  let tile = document.createElement("div");
+  tile.classList.add("tile");
+  inputField.value ? buildTile(tile, inputField.value) : "";
 
+  inputField.value ? tasks.appendChild(tile) : "";
 
-function styles(crossButton, checkbox, label){
-    crossButton.style.position = "absolute";
-    crossButton.style.right = "10%";
-    crossButton.style.border = "none";
-    crossButton.style.marginTop = ".1em";
-    checkbox.style.marginRight = ".5em";
-    checkbox.style.fontSize = "2rem";
-    label.style.fontSize = "1.5rem";
+  inputField.value = "";
 }
 
+function buildTile(tile, labelText) {
+  let checkBox = document.createElement("input");
+  checkBox.type = "checkbox";
 
-function add(){    
-    let tasks = document.querySelector("#tasks");
-    let inputTask = document.querySelector("#inputTask");
-    let checkbox = document.createElement("input");
-    let label = document.createElement("label");
-    let crossButton = document.createElement("button");
-    let lineBreak = document.createElement("br");
-    
-    
-    crossButton.innerHTML = "<i class='lni lni-cross-circle'></i>";
-    checkbox.type = "checkbox";
-    label.innerHTML = inputTask.value;
+  let label = document.createElement("label");
+  label.innerText = labelText;
 
-   
-    if (inputTask.value){ 
-        
-        tasks.appendChild(checkbox);
-        tasks.appendChild(label);
-        tasks.appendChild(crossButton);
-        styles(crossButton, checkbox, label);
-        tasks.appendChild(lineBreak);
-        inputTask.value = "";
-        if(checkbox.checked){
-            label.style.textDecoration= "line-through";
-            console.log("hi")
-        }
-        
-        crossButton.onclick = function(){ 
-           tasks.removeChild(checkbox);
-           tasks.removeChild(label);
-           tasks.removeChild(crossButton);
-        }
-    }
-    
-    else{
-        alert("enter the task");
-    }
+  let deleteBtn = document.createElement("div");
+  deleteBtn.innerHTML = `<i class="lni lni-cross-circle"></i>`;
+
+  tile.appendChild(checkBox);
+  tile.appendChild(label);
+  tile.appendChild(deleteBtn);
+
+  checkBox.addEventListener("click", () => checkBoxEvent(checkBox, label));
+  deleteBtn.addEventListener("click", () => deleteTask(deleteBtn));
+}
+
+function checkBoxEvent(checkBox, label) {
+  if (checkBox.checked) {
+    label.classList.add("labelStrikeThrough");
+    return;
+  }
+  label.classList.remove("labelStrikeThrough");
+}
+
+function deleteTask(deleteBtn) {
+  deleteBtn.parentNode.remove();
 }
