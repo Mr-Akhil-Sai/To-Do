@@ -17,6 +17,12 @@ header{
 }
 #tasks{
     width: 90vw;
-    border: 1px solid red;
     margin-top: 2em;
+}
+.inputForTask{
+    display: flex;
+    justify-content: center;
+    width: 90vw;
+    padding-bottom: 2em;
+    border-bottom: 2px solid orangered;
 }
