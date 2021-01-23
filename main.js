@@ -59,10 +59,8 @@ function editTask(label, editBtn, tile, checkBox, deleteBtn){
     tile.appendChild(deleteBtn);
     tasks.appendChild(tile);
     newTask.focus();
-    
     okBtn.addEventListener("click", () => editedTask(tile, checkBox,
          label, newTask, editBtn, deleteBtn, okBtn));
- 
 }
 
 function deleteTask(deleteBtn) {
@@ -77,6 +75,10 @@ function editedTask(tile, checkBox,
     okBtn.remove();
     appendingElementsToTile(checkBox,label,editBtn,deleteBtn, tile);
     tasks.appendChild(tile);
+
+    checkBox.addEventListener("click", () => checkBoxEvent(checkBox, label));
+
+    deleteBtn.addEventListener("click", () => deleteTask(deleteBtn));
 }
 
 function appendingElementsToTile(checkBox,label,editBtn,deleteBtn, tile){
