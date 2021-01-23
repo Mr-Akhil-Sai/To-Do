@@ -50,10 +50,7 @@ function editTask(label, editBtn, tile, checkBox, deleteBtn) {
   let okBtn = document.createElement("div");
   okBtn.innerHTML = `<i class="lni lni-checkmark-circle"></i>`;
 
-  // checkBox.remove();
-  // label.remove();
   editBtn.remove();
-  // deleteBtn.remove();
   tile.remove();
 
   tile.appendChild(checkBox);
