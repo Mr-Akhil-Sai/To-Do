@@ -27,13 +27,10 @@ function buildTile(tile, labelText) {
   editBtn.innerHTML = `<i class="lni lni-pencil"></i>`;
   editBtn.classList.add("editBtn");
 
-  tile.appendChild(checkBox);
-  tile.appendChild(label);
-  tile.appendChild(editBtn);
-  tile.appendChild(deleteBtn);
+  appendingElementsToTile(checkBox,label,editBtn,deleteBtn, tile)
 
   checkBox.addEventListener("click", () => checkBoxEvent(checkBox, label));
-  editBtn.addEventListener("click", () => editTask(label));
+  editBtn.addEventListener("click", () => editTask(label, editBtn, tile, checkBox, deleteBtn));
 
   deleteBtn.addEventListener("click", () => deleteTask(deleteBtn));
 }
@@ -46,10 +43,45 @@ function checkBoxEvent(checkBox, label) {
   label.classList.remove("labelStrikeThrough");
 }
 
-function editTask(label){
-  label.innerHTML = prompt("enter the edited text");
+function editTask(label, editBtn, tile, checkBox, deleteBtn){
+    let newTask = document.createElement("input");
+    let okBtn = document.createElement("div");
+    okBtn.innerHTML = `<i class="lni lni-checkmark-circle"></i>`;
+
+    checkBox.remove();
+    label.remove();
+    editBtn.remove();
+    deleteBtn.remove();
+    
+    tile.appendChild(checkBox);
+    tile.appendChild(newTask);
+    tile.appendChild(okBtn);
+    tile.appendChild(deleteBtn);
+    tasks.appendChild(tile);
+    newTask.focus();
+    
+    okBtn.addEventListener("click", () => editedTask(tile, checkBox,
+         label, newTask, editBtn, deleteBtn, okBtn));
+ 
 }
 
 function deleteTask(deleteBtn) {
   deleteBtn.parentNode.remove();
+}
+
+function editedTask(tile, checkBox,
+    label, newTask, editBtn, deleteBtn, okBtn){
+    label = document.createElement("label");
+    label.innerText = newTask.value;
+    newTask.remove();   
+    okBtn.remove();
+    appendingElementsToTile(checkBox,label,editBtn,deleteBtn, tile);
+    tasks.appendChild(tile);
+}
+
+function appendingElementsToTile(checkBox,label,editBtn,deleteBtn, tile){
+    tile.appendChild(checkBox);
+    tile.appendChild(label);
+    tile.appendChild(editBtn);
+    tile.appendChild(deleteBtn);
 }
