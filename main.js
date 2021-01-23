@@ -23,11 +23,18 @@ function buildTile(tile, labelText) {
   let deleteBtn = document.createElement("div");
   deleteBtn.innerHTML = `<i class="lni lni-cross-circle"></i>`;
 
+  let editBtn = document.createElement("div");
+  editBtn.innerHTML = `<i class="lni lni-pencil"></i>`;
+  editBtn.classList.add("editBtn");
+
   tile.appendChild(checkBox);
   tile.appendChild(label);
+  tile.appendChild(editBtn);
   tile.appendChild(deleteBtn);
 
   checkBox.addEventListener("click", () => checkBoxEvent(checkBox, label));
+  editBtn.addEventListener("click", () => editTask(label));
+
   deleteBtn.addEventListener("click", () => deleteTask(deleteBtn));
 }
 
@@ -37,6 +44,10 @@ function checkBoxEvent(checkBox, label) {
     return;
   }
   label.classList.remove("labelStrikeThrough");
+}
+
+function editTask(label){
+  label.innerHTML = prompt("enter the edited text");
 }
 
 function deleteTask(deleteBtn) {
