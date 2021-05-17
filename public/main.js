@@ -52,6 +52,7 @@ function editTask(label, editBtn, tile, checkBox, deleteBtn) {
 
   editBtn.remove();
   tile.remove();
+  label.remove();
 
   tile.appendChild(checkBox);
   tile.appendChild(newTask);
@@ -62,7 +63,6 @@ function editTask(label, editBtn, tile, checkBox, deleteBtn) {
   okBtn.addEventListener("click", () =>
     editedTask(tile, checkBox, label, newTask, editBtn, deleteBtn, okBtn)
   );
-  label.remove();
 }
 
 function deleteTask(deleteBtn) {
